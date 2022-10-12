@@ -1,6 +1,6 @@
 import './App.css';
 import {Routes, Route, Navigate} from 'react-router-dom';
-import {Main, MyPage, RegisterPage, LoginPage, Qna} from './page';
+import {Main, MyPage, RegisterPage, LoginPage, Qna, GroupPurchase} from './page';
 import { useState } from 'react';
 import { Header } from './com';
 import Border from './page/Border';
@@ -21,11 +21,11 @@ function App() {
     // console.log(inputs[0].name); : 기본닉네임
     // console.log(inputs[0].email); : admin@naver.com
 
+    // inputs에 userData 
     const userDataHandler = (userinput)=>{
       setInputs(preData => {
         return [userinput, ...preData]
       })
-
     }
 
   // const returnName = inputs.find(function(data){
@@ -36,25 +36,11 @@ function App() {
     
   const[ login, setLoginResult ] = useState(false);
 
-  // 로그인이 안됬으면 메인페이지로 보내버린다. 경로를 
-  const Redirect = () => {
-    if(login == false){
-      alert('로그인해야가능');
-    }
-    return login == true ? <MyPage/> : <Navigate to ="/" /> 
-  }
-  const RedirectBorder = () => {
-    if(login == false){
-      alert('로그인해야가능');
-    }
-    return login == true ? <Border/> : <Navigate to = "/" />
-  }
-  const RedirectQna = () => {
-    if(login == false){
-      alert('로그인해야가능');
-    }
-    return login == true ? <Qna/> : <Navigate to = "/" />
-  }
+  // 로그인이 안됬으면 메인페이지로 보내버린다.  
+  const Redirect = () => {if(login == false){alert('마이페이지는 로그인해야 가능');}return login == true ? <MyPage/> : <Navigate to ="/" />}
+  const RedirectBorder = () => {if(login == false){alert('게시판도 로그인해야 가능');}return login == true ? <Border/> : <Navigate to = "/" />}
+  const RedirectQna = () => {if(login == false){alert('질문하기도 로그인해야가능');}return login == true ? <Qna/> : <Navigate to = "/" />}
+  const RedirectGroup = () => {if(login == false){alert('공동구매도 로그인해야가능');}return login == true ? <GroupPurchase/> : <Navigate to = "/" />}
 
   return (
     <div className="App">
@@ -78,11 +64,12 @@ function App() {
           <Route path="/qna" 
                 element={<RedirectQna />} 
           />
+          <Route path="/grouppurchase" 
+                element={<RedirectGroup />} 
+          />
       </Routes>
     </div>
   );
 }
 
 export default App;
-
-//ㅇㅇㅇ

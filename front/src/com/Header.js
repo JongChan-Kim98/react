@@ -26,6 +26,7 @@ const Header = ({title, login, setLoginResult, inputs}) => {
       <div className='border' onClick={()=>{nav('/border')}}>게시판</div>
       <div className='mypage' onClick={()=>{nav('/mypage')}}>마이페이지</div>
       <div className='qna' onClick={()=>{nav('/qna')}}>QnA</div>
+      <div className='grouppurchase' onClick={()=>{nav('/grouppurchase')}}>공동구매</div>
       
       { // 삼항연산자
       login ? (<><div className='welcomeUser'>[{returnName.name}]환영함</div> <div className='loglocation' onClick ={gologout}>로그아웃</div></>) : (<div className='loglocation' onClick ={()=>{nav('/log')}}>로그인</div>)
