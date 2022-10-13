@@ -9,20 +9,10 @@ const RegisterPage = ({setName,setEmail,setPassword, onAddData}) => {
   let userPw = "";
   let userRpw = "";
 
-  const onNameHandler = (event) => {
-    userName = event.currentTarget.value;
-  }
-  const onEmailHandler = (event) => {
-    userEmail = event.currentTarget.value;
-  }
-
-  const onPasswordHandler = (event) => {
-    userPw = event.currentTarget.value;
-  }
-
-  const onConfirmPasswordHandler = (event) => {
-    userRpw = event.currentTarget.value;
-  }
+  const onNameHandler = (event) => {userName = event.currentTarget.value;}
+  const onEmailHandler = (event) => {userEmail = event.currentTarget.value;}
+  const onPasswordHandler = (event) => {userPw = event.currentTarget.value;}
+  const onConfirmPasswordHandler = (event) => {userRpw = event.currentTarget.value;}
 
   let nav = useNavigate();
 

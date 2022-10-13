@@ -2,8 +2,7 @@ import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import {Header} from '../com'
 
-function LoginPage({email, password, setLoginResult}) {
-
+function LoginPage({email, password, setLoginResult }) {
   
   const [bid, setbid] = useState("");
   const [bpw, setbpw] = useState("");
@@ -28,8 +27,7 @@ function LoginPage({email, password, setLoginResult}) {
       nav('/');
     } else{
       alert("아이디와 비밀번호가 틀립니다.");
-      setbid("");
-      setbpw("");
+      nav('/log');
     }
   }
   

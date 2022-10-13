@@ -9,17 +9,18 @@ function App() {
    const [name, setName] = useState("");
    
    const userData =[{ 
-    //  name : "기본닉네임",
-    //  email : "admin@naver.com",
-    //  password : "123"
+//      name : "관리자",
+//      email : "1",
+//      password : "1"
    }];
 
     const [inputs, setInputs] = useState(userData);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    // console.log(inputs[0].name); : 기본닉네임
-    // console.log(inputs[0].email); : admin@naver.com
+//      console.log("이메일"+inputs[0].email); 
+//      console.log("비번"+inputs[0].password);
+   console.log("유저데이터 : " + inputs[{}]);
 
     // inputs에 userData 
     const userDataHandler = (userinput)=>{
@@ -27,12 +28,6 @@ function App() {
         return [userinput, ...preData]
       })
     }
-
-  // const returnName = inputs.find(function(data){
-  //   return data.name 
-  // });
-
-  // console.log("현재위치 : App.js 네임반환해줘 : "+ returnName.name)
     
   const[ login, setLoginResult ] = useState(false);
 
@@ -40,7 +35,7 @@ function App() {
   const Redirect = () => {if(login == false){alert('마이페이지는 로그인해야 가능');}return login == true ? <MyPage/> : <Navigate to ="/" />}
   const RedirectBorder = () => {if(login == false){alert('게시판도 로그인해야 가능');}return login == true ? <Border/> : <Navigate to = "/" />}
   const RedirectQna = () => {if(login == false){alert('질문하기도 로그인해야가능');}return login == true ? <Qna/> : <Navigate to = "/" />}
-  const RedirectGroup = () => {if(login == false){alert('공동구매도 로그인해야가능');}return login == true ? <GroupPurchase/> : <Navigate to = "/" />}
+//   const RedirectGroup = () => {if(login == false){alert('공동구매도 로그인해야가능');}return login == true ? <GroupPurchase/> : <Navigate to = "/" />}
 
   return (
     <div className="App">
@@ -50,7 +45,7 @@ function App() {
                 element={<Main setLoginResult={setLoginResult} inputs={inputs} login={login}/>} 
           />
           <Route path="/log"
-                element={<LoginPage email={email} password = {password} login ={login} setLoginResult={setLoginResult}/>} 
+                element={<LoginPage email={email} password = {password} login ={login} setLoginResult={setLoginResult} inputs={inputs}/>} 
           />
           <Route path="/registerPage"
                 element={<RegisterPage onAddData={userDataHandler} setName = {setName} setEmail = {setEmail} setPassword = {setPassword}  setInputs = {setInputs} inputs={inputs}/>} 
@@ -65,7 +60,7 @@ function App() {
                 element={<RedirectQna />} 
           />
           <Route path="/grouppurchase" 
-                element={<RedirectGroup />} 
+                element={<GroupPurchase/>} 
           />
       </Routes>
     </div>
