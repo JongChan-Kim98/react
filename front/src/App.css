@@ -289,10 +289,21 @@ img{
   }
 /* 간지나는 a 링크 호버 기능 끝  */
 
-/* 공구쪽 css */
+/* 공구쪽 아이콘 css */
 
-li{
+button{
+  background: none;
+  color: inherit;
+  border: none;
+}
+
+li, ul{
   list-style: none;
+  display: flex;
+}
+
+li {
+  margin: 20px 20px;
 }
 
 .ImgBackGroud{
@@ -312,24 +323,157 @@ li{
   background-image: url(https://cdn3.wadiz.kr/category/icon/category_tech.png);
   width: 50px;
   height: 50px;
+  background-size: 85% 90%;
 }
 .CategoriImgPublishing{
   background-image: url(https://cdn3.wadiz.kr/category/icon/category_publishing.png);
   width: 50px;
   height: 50px;
+  background-size: 85% 90%;
 }
 .CategoriGive{
   background-image: url(https://cdn3.wadiz.kr/category/icon/category_campaign.png);
   width: 50px;
   height: 50px;
+  background-size: 88% 90%;
 }
 .CategoriGive2{
   background-image: url(https://cdn3.wadiz.kr/category/icon/category_donation.png);
   width: 50px;
   height: 50px;
+  background-size: 87% 90%;
 }
 .CategoriMeeting{
   background-image: url(https://cdn3.wadiz.kr/category/icon/category_community.png);
   width: 50px;
   height: 50px;
+  background-size: 88% 90%;
+}
+
+.PundingCatagori{
+ position: relative;
+ left: 34%;
+}
+
+/* ==================아이콘끝 구분선 시작=============================== */
+/* 이거는 태극무늬 구분선임 */
+.hr-how {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  border: 0;
+  height: 1px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  overflow: visible;
+  text-align: center;
+}
+.hr-how:after {
+  background: white;
+  content: "☯ ☯ ☯";
+  display: inline-block;
+  font: "BodoniXT" !important;
+  font-size: 0.9em;
+  padding: 0 0.6em;
+  position: relative;
+  top: -0.7em;
+}
+
+/* ======================구분선 끝==셔치박스시작========================= */
+.search-box {
+  position: absolute;
+  left: 50%;
+  margin-top: 2%;
+  transform: translate(-50%, -50%);
+  background-color: #949BA0;
+  height: 40px;
+  padding: 10px;
+  border-radius: 40px; 
+}
+
+.search-btn {
+  color: #EDEDED;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #949BA0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-txt {
+  float: left;
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 15px;
+  line-height: 40px;
+  width: 0; 
+  transition: 0.5s; 
+}
+
+.search-box:hover > form .search-txt {
+  width: 200px;
+}
+
+.search-box:hover > form .search-btn {
+  background: #464E54;
+}
+/* ==================================박스끝 */
+.selectOption1{
+  position: relative;
+  left: 57%;
+}
+
+form{
+  display: inline;
+}
+
+/* ======================================= */
+
+hr {
+  background-color: #fff;
+  padding: 0;
+  margin: 80px;
+}
+
+hr.hr-15 {
+  border: 0;
+  border-top: 4px double #8c8c8c;
+  text-align: center;
+}
+
+hr.hr-15:after {
+  content: '\2665';
+  display: inline-block;
+  position: relative;
+  top: -15px;
+  padding: 0 10px;
+  background: #fff;
+  color: #8c8c8c;
+  font-size: 18px;
+}
+
+.cells{
+  display: flex;
+  justify-content: space-around
+}
+
+.cell1{
+  background-image: url(https://cdn.wadiz.kr/wwwwadiz/green001/2022/1004/20221004113726863_162380.png/wadiz/format/jpg/quality/80/optimize);
+  width: 560px;
+  height: 360px;
+  background-size: 100% 100%;
+}
+.cell2{
+  background-image: url(https://cdn.wadiz.kr/wwwwadiz/green001/2022/1013/20221013101607348_162383.png/wadiz/format/jpg/quality/80/optimize);
+  width: 560px;
+  height: 360px;
+  background-size: 100% 100%;
+}
+
+.rewardCard{
+  
 }
