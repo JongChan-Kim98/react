@@ -474,6 +474,31 @@ hr.hr-15:after {
   background-size: 100% 100%;
 }
 
-.rewardCard{
+.QnaNavBar{
+  display: flex;
+  justify-content: space-evenly;
+  font-size: x-large;
+  
+}
+
+hr.hr-2 {
+  border: 0;
+  border-bottom: 2px dashed #eee;
+  background: #999;
+  margin: 0px;
+}
+
+.pagination {
+  justify-content: center;
+  font-size: x-large;
+}
+
+.QnaWiterBox{
+  position: absolute;
+  left: 50%;
+  margin-top: 2%;
+  transform: translate(-50%, -50%);
+  height: 40px;
+  padding: 10px;
   
 }
