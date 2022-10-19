@@ -4,7 +4,7 @@ const GroupPurchase = () => {
   return (
     <>
     {/* 카테고리 아이콘 */}
-    <hr class="hr-how" />
+    <hr className="hr-how" />
           <div className='PundingCatagori'>
             <ul>
               <li>
@@ -61,11 +61,11 @@ const GroupPurchase = () => {
           </div>
 
           <div className='ListHeaderBar'>
-                <div class="search-box">
+                <div className="search-box">
                   <form action="." method="post">
-                    <input class="search-txt" type="text" placeholder="검색어를 입력해 주세요"/>
-                    <button class="search-btn" type="submit">
-                        <i class="fas fa-search"></i>
+                    <input className="search-txt" type="text" placeholder="검색어를 입력해 주세요"/>
+                    <button className="search-btn" type="submit">
+                        <i className="fas fa-search"></i>
                     </button>
                   </form>
                 </div>
@@ -88,7 +88,7 @@ const GroupPurchase = () => {
                 </div>
           </div>
 
-          <hr class="hr-15"></hr>
+          <hr className="hr-15"></hr>
 
           <div className='cells'>
             <a href="">

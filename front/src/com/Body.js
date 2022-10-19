@@ -1,5 +1,4 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import {img1, img2} from '../img';
 
 const Body = () => {
@@ -10,7 +9,7 @@ const Body = () => {
       <div className='textHead'>
         <h1><span>I'm still</span></h1>
         <h1><span>Hungry</span></h1>
-        <img src = {img1}></img>
+        <img src = {img1}  alt=''></img>
         <div className='category'> 
             <table>
               <tbody>
@@ -43,7 +42,7 @@ const Body = () => {
 
         <div className='seconDiv'>
           <div className='picture'>
-              <img src = {img2}></img>
+              <img src = {img2} alt=''></img>
           </div>
             <div className='introduce'>
               <h1>Let's Chat!</h1>

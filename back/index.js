@@ -6,7 +6,7 @@ const {sequelize, user} = require('./public');
 // npm i cors
 
 sequelize.sync({force:false}).then(()=>{
-    console.log('연결 잘댐');
+    console.log('sequelize 연결 잘댐');
 }).catch((err)=>{
     console.log(err);
 })
@@ -20,35 +20,41 @@ app.use(express.json());
 
 app.use(cors(options));
 
-app.post('/login', async (req,res)=>{
+app.post('/log', async (req,res)=>{
     let {id, pw} = req.body;
     const users = await user.findOne({
         where : {user_id: id, user_pw:pw}
     });
     if(users){
-       res.send(true);
+       res.send('환영함!');
     } else{
-        res.send(false);
+       res.send('없는 아이디임');
     }
 })
 
-app.post('/signUp', async(req,res)=>{
+app.post('/registerPage', async(req,res)=>{
     console.log(req.body);
-    let {id, pw} = req.body;
+    let {id, pw, name} = req.body;
     const users = await user.findOne({
         where : {user_id: id}
     });
     if(!users){
         user.create({
-            user_id : id, user_pw:pw
+            user_id : id, user_pw:pw, user_name : name
         }).then(()=>{
-             res.send('너 가입됨');
+             res.send('가입축하');
         })
     } else{
         res.send('동일한 아이디가 있어요');
     }
 })
 
+
+
+
+
+
+
 app.listen(8000,()=>{
-    console.log('서버잘열림');
+    console.log('백서버잘열림');
 })

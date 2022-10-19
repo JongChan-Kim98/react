@@ -2,6 +2,7 @@ import React from 'react'
 import {Body, Footer} from '../com'
 
 
+
 const Main = () => {
 
   return (

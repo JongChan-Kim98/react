@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Qna = () => {
   return (
     <>
-     <hr class="hr-2"></hr>
+     <hr className="hr-2"></hr>
 
 <br />
 <br />
@@ -22,7 +22,7 @@ const Qna = () => {
 
 <br />
 <br />
-          <hr class="hr-2"></hr>
+          <hr className="hr-2"></hr>
 <br />
           <div className='QnaNavBar'>
             <div>번호</div>
@@ -32,14 +32,14 @@ const Qna = () => {
           </div>
 
 <br />
-          <hr class="hr-2"></hr>
+          <hr className="hr-2"></hr>
 
 <br />
 <br />
 <br />
 
           <nav>
-            <ul class="pagination">
+            <ul className="pagination">
                 <li><Link to = '/'>{"<<"}</Link></li>
                 <li><Link to = '/'>1</Link></li>
                 <li><Link to = '/'>2</Link></li>

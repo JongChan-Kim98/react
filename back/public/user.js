@@ -4,7 +4,7 @@ class user extends Sequelize.Model{
     static init(sequelize){
         return super.init({
             user_id:{
-                type: Sequelize.STRING(20),
+                type: Sequelize.STRING(30),
                 allowNull : false,
                 unique : true
             },
@@ -12,7 +12,7 @@ class user extends Sequelize.Model{
                 type: Sequelize.STRING(20),
                 allowNull : false,
             },
-            user_email:{
+            user_name:{
                 type: Sequelize.STRING(30),
                 allowNull : false,
             }
@@ -26,6 +26,13 @@ class user extends Sequelize.Model{
             collate:'utf8_general_ci'
         })
     }
+
+    // static associate(db){
+    //     db.user.hasMany(db.border, { foreignKey : "writer", sourceKey: "nickName"});
+    // }
+    
+
+
 }
 
 module.exports = user;
