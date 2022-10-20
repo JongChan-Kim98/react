@@ -18,13 +18,7 @@ db.sequelize = sequelize;
 db.user = user;
 db.border = border;
 
-
-
 user.init(sequelize);
 border.init(sequelize);
-
-// user.associate(db);
-// border.associate(db);
-
 
 module.exports = db;

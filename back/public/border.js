@@ -4,19 +4,24 @@ class border extends Sequelize.Model{
     static init(sequelize){
         return super.init({
             postId: {
-                type: Sequelize.INTEGER,
+                type: Sequelize.INTEGER(100),
                 primaryKey: true,
                 autoIncrement: true,
                 unique: true,
             },
             title : {
                 type : Sequelize.STRING(100), 
-                allowNull : false, 
+                allowNull : true, 
             },
             content : {
                 type : Sequelize.TEXT, 
-                allowNull: false,
-            }
+                allowNull: true,
+            },
+            user_id : {
+                type: Sequelize.STRING(30),
+                allowNull : true,
+                unique : false
+            },
         },
         {
             sequelize,
@@ -27,11 +32,6 @@ class border extends Sequelize.Model{
             collate:'utf8_general_ci'
         })
     }
-    
-    static associate(db){
-        db.Border.belongsTo(db.User, {foreignKey : "writer", targetKey : "nickName"});
-    }
-
 }
 
 module.exports = border;

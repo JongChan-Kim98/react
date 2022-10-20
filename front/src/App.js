@@ -11,7 +11,7 @@ function App() {
    const isLogin = useSelector(state=> state.loginReducer.isLogin);
 
   // 로그인이 안됬으면 메인페이지로 보내버린다.  
-  const Redirect = () => {if(isLogin === false){alert('마이페이지는 로그인해야 가능');}return isLogin === true ? <MyPage/> : <Navigate to ="/" />}
+  // const Redirect = () => {if(isLogin === false){alert('마이페이지는 로그인해야 가능');}return isLogin === true ? <MyPage/> : <Navigate to ="/" />}
   // const RedirectBorder = () => {if(login == false){alert('게시판도 로그인해야 가능');}return login == true ? <Border/> : <Navigate to = "/" />}
   // const RedirectQna = () => {if(login == false){alert('질문하기도 로그인해야가능');}return login == true ? <Qna/> : <Navigate to = "/" />}
   // const RedirectGroup = () => {if(login == false){alert('공동구매도 로그인해야가능');}return login == true ? <GroupPurchase/> : <Navigate to = "/" />}
@@ -33,7 +33,7 @@ function App() {
                 element={<Border  />}
           />
           <Route path="/mypage" 
-                element={<Redirect />} 
+                element={<MyPage />} 
           />
           <Route path="/qna" 
                 element={<Qna />} 

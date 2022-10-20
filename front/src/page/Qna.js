@@ -6,7 +6,6 @@ const Qna = () => {
   return (
     <>
      <hr className="hr-2"></hr>
-
 <br />
 <br />
       <div>

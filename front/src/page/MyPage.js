@@ -2,9 +2,17 @@ import React from 'react'
 
 const MyPage = () => {
   return (
-    <div>
-      여기 로그인 해야 올 수 있습니당
-    </div>
+    <>
+    
+
+      <div className='myPage'>
+          <hr className="hr-2"></hr>
+          <div className='seconHeader'>마이페이지에 오신걸 환영합니다.</div>
+          <br />
+          <hr className="hr-2"></hr>
+
+      </div>
+    </>
   )
 }
 

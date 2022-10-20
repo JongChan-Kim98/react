@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const {sequelize, user} = require('./public');
+const {sequelize, user, border} = require('./public');
 
 // npm i cors
 
@@ -20,6 +20,7 @@ app.use(express.json());
 
 app.use(cors(options));
 
+// 로그인
 app.post('/log', async (req,res)=>{
     let {id, pw} = req.body;
     const users = await user.findOne({
@@ -32,6 +33,7 @@ app.post('/log', async (req,res)=>{
     }
 })
 
+// 회원가입
 app.post('/registerPage', async(req,res)=>{
     console.log(req.body);
     let {id, pw, name} = req.body;
@@ -48,6 +50,37 @@ app.post('/registerPage', async(req,res)=>{
         res.send('동일한 아이디가 있어요');
     }
 })
+
+// 질문작성하기
+app.post('/writerQna', async(req,res)=>{
+    let {title, content, id} = req.body;
+    if (title == "" || content == "") {
+        res.send('내용입력하세요')
+    } else{
+        border.create({
+            title: title,
+            content: content,
+            user_id: id,
+        }).then(()=>{
+            res.send('게시글이 작성되었습니다.');
+        })
+    }
+});
+
+// 질문 목록
+app.post('/qna',(req,res)=>{
+    border.findAll().then((datas)=>{
+        res.send(datas);
+    })
+})
+
+// 질문 목록 보여주기
+app.get('/qna', (req,res)=>{
+    res.render('qna');
+})
+
+
+
 
 
 

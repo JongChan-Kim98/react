@@ -26,13 +26,6 @@ class user extends Sequelize.Model{
             collate:'utf8_general_ci'
         })
     }
-
-    // static associate(db){
-    //     db.user.hasMany(db.border, { foreignKey : "writer", sourceKey: "nickName"});
-    // }
-    
-
-
 }
 
 module.exports = user;
