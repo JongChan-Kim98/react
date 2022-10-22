@@ -64,11 +64,14 @@ const MyPage = () => {
 
           <div className='rightRange'>
             <div className='reviseMypage'>
-              <form action="/" method='POST'>
+              <form action="/updateId" method='POST'>
                 <div>
-                  <label htmlFor="">아이디 수정</label> <input type="text" /> <br />
-                  <label htmlFor="">비밀번호 수정</label> <input type="text" /> <br />
+                  <div className='숨킴이름' name='userId'>{userName}</div>
+                  <label htmlFor="">아이디 수정</label> <input type="text" name='reId' /> <br />  
+                  <button type='submit'>적 용</button>
                 </div>
+              </form>
+                  <label htmlFor="">비밀번호 수정</label> <input type="text" /> <br />
   <br />
                 <div>
                   <label htmlFor="">자기소개 #태그 {'(최대12개)'}</label><br />
@@ -82,7 +85,6 @@ const MyPage = () => {
 
                 <button type='submit'>적 용</button>
 
-              </form>
             </div>
           </div>
       </div>

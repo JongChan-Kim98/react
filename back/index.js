@@ -79,8 +79,20 @@ app.get('/qna', (req,res)=>{
     res.render('qna');
 })
 
-
-
+// 마이페이지 아이디 비밀번호 수정 
+app.post('/updateId', (req,res)=>{
+    const {userId, reId} = req.body;
+    user.update({
+        user_id : reId,
+    },
+    {
+       where : {
+        user_id : userId,
+       } 
+    }).then((e)=>{
+        res.send('잘변경댐');
+    })
+})
 
 
 
