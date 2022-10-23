@@ -1,9 +1,19 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
-
+import React,{useRef}from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import { reinfoAction} from '../redux/middleware/reinfoAction';
+ 
 
 const MyPage = () => {
   const userName = useSelector(state => state.loginReducer.id);
+  const dispatch = useDispatch();
+  const reid = useRef();
+
+  
+  const submitReidBtn = () =>{
+    dispatch(reinfoAction.reidBtn(reid.value));
+  }
+
+
 
   let previewImage = document.getElementById("preview-image");
   let count = false;
@@ -64,11 +74,11 @@ const MyPage = () => {
 
           <div className='rightRange'>
             <div className='reviseMypage'>
-              <form action="/updateId" method='POST'>
+              <form action="/mypage" method='POST'>
                 <div>
                   <div className='숨킴이름' name='userId'>{userName}</div>
                   <label htmlFor="">아이디 수정</label> <input type="text" name='reId' /> <br />  
-                  <button type='submit'>적 용</button>
+                  <button type='submit' ref={reid} onChange={(e)=>{reid.value = e.target.value}} onClick={submitReidBtn}>적 용</button>
                 </div>
               </form>
                   <label htmlFor="">비밀번호 수정</label> <input type="text" /> <br />

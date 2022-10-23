@@ -10,7 +10,8 @@ function postQna(title, content, id){
                 title, content, id
             }
         })
-        console.log("qnaAction :" + user.data)
+         console.log("qnaAction :" + user.data)
+      
         alert(user.data);
        
     }

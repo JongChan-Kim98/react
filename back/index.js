@@ -80,8 +80,8 @@ app.get('/qna', (req,res)=>{
 })
 
 // 마이페이지 아이디 비밀번호 수정 
-app.post('/updateId', (req,res)=>{
-    const {userId, reId} = req.body;
+app.post('/mypage', (req,res)=>{
+    let {userId, reId} = req.body;
     user.update({
         user_id : reId,
     },
@@ -92,6 +92,7 @@ app.post('/updateId', (req,res)=>{
     }).then((e)=>{
         res.send('잘변경댐');
     })
+    console.log()
 })
 
 

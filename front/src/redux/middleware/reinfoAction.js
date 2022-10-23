@@ -1,16 +1,16 @@
 import axios from 'axios';
 
-function postQna(title, content, id){
+function reidBtn(id){
     return async(dispatch, getState) =>
     {
         const user =  await axios({
             method: 'post',
-            url:'http://localhost:8000/writerQna',
+            url:'http://localhost:8000/mypage',
             data: {
-                title, content, id
+                id
             }
         })
-        console.log("qnaAction :" + user.data)
+        console.log("reinfoAction :" + user.data)
         alert(user.data);
        
     }
@@ -18,4 +18,4 @@ function postQna(title, content, id){
 
 
 
-export const qnawriteAction = {postQna};
+export const reinfoAction = {reidBtn};
