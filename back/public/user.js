@@ -15,6 +15,12 @@ class user extends Sequelize.Model{
             user_name:{
                 type: Sequelize.STRING(30),
                 allowNull : false,
+            },
+            profilePicture : {
+                type : Sequelize.STRING,
+                allowNull:true,
+                BLOB : true,
+                defaultValue : 'https://static.nid.naver.com/images/web/user/default.png?type=s160',
             }
         },
         {

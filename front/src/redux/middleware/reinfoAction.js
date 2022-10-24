@@ -1,21 +1,36 @@
 import axios from 'axios';
 
-function reidBtn(id){
+function reidBtn(reId, userId){
     return async(dispatch, getState) =>
     {
         const user =  await axios({
             method: 'post',
-            url:'http://localhost:8000/mypage',
+            url:'http://localhost:8000/reId',
             data: {
-                id
+                reId, userId
             }
         })
         console.log("reinfoAction :" + user.data)
         alert(user.data);
-       
+    }
+}
+
+function profilePicture(){
+    return async(dispatch, getState) =>
+    {
+        const user =  await axios({
+            method: 'post',
+            url:'http://localhost:8000/profilePicture',
+            data: {
+                
+            }
+        })
+
+        dispatch({type:"getProfilePicture",payload:{profileP}})
     }
 }
 
 
 
-export const reinfoAction = {reidBtn};
+
+export const reinfoAction = {reidBtn, profilePicture};

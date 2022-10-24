@@ -33,7 +33,7 @@ app.post('/log', async (req,res)=>{
     }
 })
 
-// 회원가입
+// 회원가입 등록
 app.post('/registerPage', async(req,res)=>{
     console.log(req.body);
     let {id, pw, name} = req.body;
@@ -76,30 +76,36 @@ app.post('/qna',(req,res)=>{
 
 // 질문 목록 보여주기
 app.get('/qna', (req,res)=>{
-    res.render('qna');
+    res.render('/qna');
 })
 
-// 마이페이지 아이디 비밀번호 수정 
-app.post('/mypage', (req,res)=>{
-    let {userId, reId} = req.body;
-    user.update({
-        user_id : reId,
-    },
-    {
-       where : {
-        user_id : userId,
-       } 
-    }).then((e)=>{
-        res.send('잘변경댐');
-    })
-    console.log()
+// 마이페이지 아이디 수정 
+app.post('/reId', async(req,res)=>{
+    let {reId, userId} = req.body;
+        user.update({
+            user_id : reId,
+        },
+        {
+            where : {user_id: userId}
+        }
+        ).then((e)=>{
+            res.send('잘변경댐');
+        }).catch((err) =>{
+            console.log(err)
+        })
+   
+    console.log("reId: " + reId)
+    console.log("userId: " + userId)
 })
 
-
-
-
-
-
+app.post("/profilePicture", async(req, res) => {
+    let {userName} = req.body; 
+    const users = await user.findOne({
+        where : {user_id: userName}
+    }).then((e) => {
+        res.send(users);
+      })
+  });
 
 app.listen(8000,()=>{
     console.log('백서버잘열림');

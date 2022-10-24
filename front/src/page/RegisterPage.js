@@ -22,7 +22,7 @@ const RegisterPage = () => {
       alert('비밀번호와 비밀번호확인은 같아야 합니다.');
     } else{ // 비밀번호 일치시 
       dispatch(loginAction.signUp(idInput.value, pwInput.value, nameInput.value));
-     // nav('/log');
+      nav('/log');
     }
     // console.log("nameInput:"+ nameInput.value );
   }

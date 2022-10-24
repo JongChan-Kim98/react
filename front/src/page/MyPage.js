@@ -1,19 +1,19 @@
-import React,{useRef}from 'react'
+import React,{useEffect, useRef}from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { reinfoAction} from '../redux/middleware/reinfoAction';
+import { useNavigate } from 'react-router-dom';
  
 
 const MyPage = () => {
   const userName = useSelector(state => state.loginReducer.id);
   const dispatch = useDispatch();
-  const reid = useRef();
+  const reId = useRef();
+  const nav = useNavigate();
 
-  
   const submitReidBtn = () =>{
-    dispatch(reinfoAction.reidBtn(reid.value));
+    dispatch(reinfoAction.reidBtn(reId.value, userName));
+    nav('/mypage');
   }
-
-
 
   let previewImage = document.getElementById("preview-image");
   let count = false;
@@ -57,31 +57,34 @@ const MyPage = () => {
           <br />
 <hr className="hr-2"></hr>
           <div className='leftProfil'>
-            <div className='profilbox'>
-              <span className="filebox">
-                <img className ='profilpt' id="preview-image" src={previewImage} alt=''/>
-                <input className='displayBlock' type="file" id="input-image"  />
-                <input type="file" accept="image/*" id="input-image" name="profilePicture" defaultValue="" />
-                <div className="file-edit-icon">
-                  <label htmlFor="input-image">사진변경</label>
-                  <label className="preview-de">삭제</label> 
-                </div>
-                <br /><br />
-                <div className='username'>{userName}</div>
-              </span>
-            </div>
+            <form action="/profilePicture" method='POST'>
+              <div className='profilbox'>
+                <span className="filebox">
+                  <img className ='profilpt' id="preview-image" src={previewImage} alt=''/>
+                  <input className='displayBlock' type="file" id="input-image"  />
+                  <input type="file" accept="image/*" id="input-image" name="profilePicture" defaultValue="" />
+                  <div className="file-edit-icon">
+                    <label htmlFor="input-image">사진변경</label>
+                    <label className="preview-de">삭제</label> 
+                  </div>
+                  <br /><br />
+                  <div className='username'>{userName}</div>
+                </span>
+              </div>
+           </form>
           </div>
 
           <div className='rightRange'>
             <div className='reviseMypage'>
-              <form action="/mypage" method='POST'>
+              <form action="/reId" method='POST'>
                 <div>
-                  <div className='숨킴이름' name='userId'>{userName}</div>
-                  <label htmlFor="">아이디 수정</label> <input type="text" name='reId' /> <br />  
-                  <button type='submit' ref={reid} onChange={(e)=>{reid.value = e.target.value}} onClick={submitReidBtn}>적 용</button>
+                  <div name='userId'></div>
+                  <label htmlFor="">아이디 수정</label> <input type="text" ref={reId} onChange={(e)=>{reId.value = e.target.value}}name='reId' defaultValue={userName || ''}/> <br />  
+                  <button type='submit'  onClick={submitReidBtn}>아이디변경</button>
                 </div>
               </form>
-                  <label htmlFor="">비밀번호 수정</label> <input type="text" /> <br />
+                  <label htmlFor="">비밀번호 수정</label> <input type="text" /><br /> 
+                  <button type='submit'  onClick={submitReidBtn}>비밀번호수정</button><br />
   <br />
                 <div>
                   <label htmlFor="">자기소개 #태그 {'(최대12개)'}</label><br />
@@ -94,7 +97,12 @@ const MyPage = () => {
                 <label htmlFor="">메인페이지 한줄소개{'15자이내'} </label><input type="text" /><br /><br />
 
                 <button type='submit'>적 용</button>
-
+<br /><br /><br />
+ 
+                <div>
+                  <label htmlFor="">Let's Chat </label><br />
+                  <textarea name="" id="" cols="50" rows="10"></textarea>
+                </div>
             </div>
           </div>
       </div>
