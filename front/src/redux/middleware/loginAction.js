@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-function login(id,pw){
+function login(id,pw,userName){
     
     return async(dispatch, getState) =>
     {
@@ -8,18 +8,18 @@ function login(id,pw){
             method: 'post',
             url:'http://localhost:8000/log',
             data: {
-                id,pw
+                id,pw, userName
             }
         })
 
-        console.log(user);
-
+        
         if(user.data){
-            dispatch({type:"LOGIN",payload:{id,pw}})
-            alert(user.data);
+            dispatch({type:"LOGIN",payload:{id,pw,user,userName}})
+            alert(user.data.notice);
         } else{
             alert('없는 아이디임 회원가입하세요');
         }
+        console.log(user.data);
     }
 }
 
@@ -44,6 +44,7 @@ function signUp(id,pw,name){
         })
         console.log('회원가입내용'+ user);
         alert(user.data);
+
        
     }
 }

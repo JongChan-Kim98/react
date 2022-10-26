@@ -33,6 +33,13 @@ const Qna = () => {
 <br />
           <hr className="hr-2"></hr>
 
+          <div className='QnaNavBar'>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+
 <br />
 <br />
 <br />

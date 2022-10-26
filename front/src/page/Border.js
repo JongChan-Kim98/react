@@ -5,7 +5,7 @@ const Border = () => {
   return (
     <>
       <div>
-      
+      준비중
       </div>
     </>
   )

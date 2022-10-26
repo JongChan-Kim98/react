@@ -26,7 +26,7 @@ const Header = ({title, isLogin}) => {
       <div><Link to = '/grouppurchase' data-hover="공동구매">공동구매</Link></div>
       
       { // 삼항연산하는부분
-      isLogin ? (<><div className='welcomeUser'>{userName}환영함</div> <div className='loglocation'><Link to = '/log' data-hover="로그아웃" onClick={logOut}>로그아웃</Link></div></>) : (<div className='loglocation'><Link to = '/log' data-hover="로그인">로그인</Link></div>)
+      isLogin ? (<><div className='welcomeUser'>{userName}님 환영합니다.</div> <div className='loglocation'><Link to = '/log' data-hover="로그아웃" onClick={logOut}>로그아웃</Link></div></>) : (<div className='loglocation'><Link to = '/log' data-hover="로그인">로그인</Link></div>)
       }
       <div className='register'><Link to = '/registerPage' data-hover="회원가입">회원가입</Link></div>
     </div>

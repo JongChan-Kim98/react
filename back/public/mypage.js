@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 
+// 쫑찬아 이거 모델명은 대문자로 적고 테이블 명은 소문자 복수형으로 적는게 통상적인 약속이래~~~ 참고하던지 말던지
 class mypage extends Sequelize.Model{
     static init(sequelize){
         return super.init({

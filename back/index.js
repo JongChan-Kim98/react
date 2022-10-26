@@ -3,7 +3,23 @@ const cors = require('cors');
 const app = express();
 const {sequelize, user, border} = require('./public');
 
-// npm i cors
+const multer = require('multer');
+let storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+		cb(null, './uploadImg')
+		//이미지 업로드시킬 폴더 위치
+    },
+    filename: function (req, file, cb) {		
+		cb(null, file.originalname.replace('.PNG',""))
+        // Buffer.from(filename, 'latin1').toString('utf8')
+        // 서버에 저장할 파일 명
+    }
+})
+let upload = multer({ storage: storage })
+// storage는 업로드 될 폴더 위치
+
+app.use("/uploadimg", express.static(__dirname + "/uploadImg"));
+
 
 sequelize.sync({force:false}).then(()=>{
     console.log('sequelize 연결 잘댐');
@@ -26,8 +42,15 @@ app.post('/log', async (req,res)=>{
     const users = await user.findOne({
         where : {user_id: id, user_pw:pw}
     });
+   // console.log(users)
     if(users){
-       res.send('환영함!');
+       res.send({ 
+        notice : "로그인환영!",
+        userid : users.user_id,
+        userpw : users.user_pw,
+        userPicture : users.profilePicture,
+        userName : users.user_name
+    });
     } else{
        res.send('없는 아이디임');
     }
@@ -74,13 +97,9 @@ app.post('/qna',(req,res)=>{
     })
 })
 
-// 질문 목록 보여주기
-app.get('/qna', (req,res)=>{
-    res.render('/qna');
-})
 
-// 마이페이지 아이디 수정 
-app.post('/reId', async(req,res)=>{
+// 마이페이지 아이디 업데이트  
+app.post('/mypage', async(req,res)=>{
     let {reId, userId} = req.body;
         user.update({
             user_id : reId,
@@ -89,7 +108,9 @@ app.post('/reId', async(req,res)=>{
             where : {user_id: userId}
         }
         ).then((e)=>{
-            res.send('잘변경댐');
+            res.send({
+                notice:"아이디변경완료!",
+            });
         }).catch((err) =>{
             console.log(err)
         })
@@ -98,15 +119,27 @@ app.post('/reId', async(req,res)=>{
     console.log("userId: " + userId)
 })
 
-app.post("/profilePicture", async(req, res) => {
-    let {userName} = req.body; 
-    const users = await user.findOne({
-        where : {user_id: userName}
-    }).then((e) => {
-        res.send(users);
-      })
-  });
+// 마이페이지 프로필 사진 업데이트
+app.post('/mypage'), upload.single("file"), async(req,res) =>{
+    const userId = req.body;
+    user.update({
+        profilePicture : "uploadimg/" + req.file.originalname.replace("PNG","")
+    },
+    {
+        where : {
+            user_id : userId,
+        }
+    }).then((e)=>{
+        res.send();
+    })
+}
+
+
+
+
 
 app.listen(8000,()=>{
     console.log('백서버잘열림');
 })
+
+

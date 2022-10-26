@@ -5,13 +5,13 @@ function reidBtn(reId, userId){
     {
         const user =  await axios({
             method: 'post',
-            url:'http://localhost:8000/reId',
+            url:'http://localhost:8000/mypage',
             data: {
                 reId, userId
             }
         })
-        console.log("reinfoAction :" + user.data)
-        alert(user.data);
+        
+        alert(user.data.notice);
     }
 }
 

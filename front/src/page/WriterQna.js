@@ -15,14 +15,13 @@ const WriterQna = () => {
   let submitQna = (event) => {    
     // event.preventDefault()
     dispatch(qnawriteAction.postQna(title.value, content.value, userName));
-    dispatch(qnawriteAction.enterQna());
     nav('/qna')
  }
 
   return (
     <>
       <div className='QnaWiterBox'>
-        <form action="/writerQna" method='POST'>
+        <form>
           <div>제 목</div>
           <input type="text" name="title" onChange={(e)=>{title.value = e.target.value}} />
           <div>내 용</div>

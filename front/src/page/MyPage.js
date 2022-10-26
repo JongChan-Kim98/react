@@ -1,53 +1,33 @@
-import React,{useEffect, useRef}from 'react'
+import React,{useEffect, useRef, useState}from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { reinfoAction} from '../redux/middleware/reinfoAction';
 import { useNavigate } from 'react-router-dom';
  
 
-const MyPage = () => {
+const MyPage = ({aa, user_Name}) => {
   const userName = useSelector(state => state.loginReducer.id);
   const dispatch = useDispatch();
   const reId = useRef();
   const nav = useNavigate();
 
+  //아이디 변경 버튼
   const submitReidBtn = () =>{
     dispatch(reinfoAction.reidBtn(reId.value, userName));
     nav('/mypage');
   }
 
-  let previewImage = document.getElementById("preview-image");
-  let count = false;
-  previewImage = "https://static.nid.naver.com/images/web/user/default.png?type=s160";
-  
-  function readImage(input) {
-  // 인풋 태그에 파일이 있는 경우
-  if(input.files && input.files[0] && count === false) {
-      count = true;
-      // FileReader 인스턴스 생성
-      const reader = new FileReader()
-      // 이미지가 로드가 된 경우
-      reader.onload = (e) => {
-          previewImage.src = e.target.result
-      }
-      // reader가 이미지 읽도록 하기
-      reader.readAsDataURL(input.files[0])
-      } 
-  }
-
-  window.onload = function(){
-    // input file에 change 이벤트 부여
-    const inputImage = document.getElementById("input-image")
-    inputImage.addEventListener("change", e => {
-        readImage(e.target)
-    })
-    const previewde = document.querySelector(".preview-de");
-    previewde.addEventListener("click",function(){
-        if(count === true){
-            previewImage.src = "https://static.nid.naver.com/images/web/user/default.png?type=s160";
-            count = false;
-        }
-    })
-  }
+  const [imageSrc, setImageSrc] = useState(aa);
+        
+  const encodeFileToBase64 = (fileBlob) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(fileBlob);
+    return new Promise((resolve) => {
+      reader.onload = () => {
+        setImageSrc(reader.result);
+        resolve();
+      };
+    });
+  };
 
   return (
     <>
@@ -57,15 +37,22 @@ const MyPage = () => {
           <br />
 <hr className="hr-2"></hr>
           <div className='leftProfil'>
-            <form action="/profilePicture" method='POST'>
+            <form encType='multipart/form-data' >
               <div className='profilbox'>
                 <span className="filebox">
-                  <img className ='profilpt' id="preview-image" src={previewImage} alt=''/>
-                  <input className='displayBlock' type="file" id="input-image"  />
-                  <input type="file" accept="image/*" id="input-image" name="profilePicture" defaultValue="" />
+                  {/* 저장된 프로필사진 불러오는 부분 */}
+                  <div className ='profilpt'>
+                  {imageSrc && <img src={imageSrc} alt="preview-img" className='profilpt' />}
+                  </div>
+                  {/* <img className ='profilpt' id="preview-image" src={aa} alt=''/> */}
+                  {/* 사진선택부분 디스플레이논 해논 부분 */}
+                  {/* <input className='displayBlock' type="file" id="input-image"  /> */}
+                  {/* 파일 업로드하는 부분인데 사진변경 라벨 아이디랑 일치해서 되는 부분임 */}
+                  <input type="file" accept="image/*" id="input-image" onChange={(e) => {encodeFileToBase64(e.target.files[0]);}}
+ />
                   <div className="file-edit-icon">
                     <label htmlFor="input-image">사진변경</label>
-                    <label className="preview-de">삭제</label> 
+                    <button className="label2" type='submit'>사진저장</button>
                   </div>
                   <br /><br />
                   <div className='username'>{userName}</div>
@@ -76,11 +63,11 @@ const MyPage = () => {
 
           <div className='rightRange'>
             <div className='reviseMypage'>
-              <form action="/reId" method='POST'>
+              <form>
                 <div>
                   <div name='userId'></div>
                   <label htmlFor="">아이디 수정</label> <input type="text" ref={reId} onChange={(e)=>{reId.value = e.target.value}}name='reId' defaultValue={userName || ''}/> <br />  
-                  <button type='submit'  onClick={submitReidBtn}>아이디변경</button>
+                  <button type='submit' onClick={submitReidBtn}>아이디변경</button>
                 </div>
               </form>
                   <label htmlFor="">비밀번호 수정</label> <input type="text" /><br /> 

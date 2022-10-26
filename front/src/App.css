@@ -147,6 +147,7 @@ img{
 .welcomeUser{
   position: absolute;
   right: 25rem;
+  font-size: initial;
 }
 
 .register{
@@ -592,4 +593,18 @@ hr.hr-2 {
 
 .숨킴이름{
   display: none;
+}
+
+.label2{
+  display: inline-block;
+  padding: .5em .75em;
+  /* color: #999; */
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: #fdfdfd;
+  cursor: pointer;
+  border: 1px solid #ebebeb;
+  border-bottom-color: #e2e2e2;
+  border-radius: .25em;
 }
