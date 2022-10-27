@@ -17,5 +17,24 @@ function postQna(title, content, id){
     }
 }
 
+function boardStart(){
+    return async(dispatch, getstate) => {
+        const board = await axios({
+            method : "post",
+            url : "http://localhost:8000/boardStart",
+            data : {
 
-export const qnawriteAction = {postQna};
+            }
+        })
+        // console.log(board.data);
+        dispatch({type : "BOARDSTART", payload : board.data});
+    }
+}
+
+
+
+
+
+
+
+export const qnawriteAction = {postQna, boardStart};

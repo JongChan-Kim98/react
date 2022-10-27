@@ -14,21 +14,23 @@ function reidBtn(reId, userId){
         alert(user.data.notice);
     }
 }
-
-function profilePicture(){
+function profilePicture(formData, config){
     return async(dispatch, getState) =>
     {
         const user =  await axios({
             method: 'post',
-            url:'http://localhost:8000/profilePicture',
-            data: {
-                
-            }
-        })
+            url:'http://localhost:8000/profil',
+            data: formData,config
+        }).then(()=>{
+            alert("성공");
 
-        dispatch({type:"getProfilePicture",payload:{profileP}})
+        }).catch((err)=>{
+            console.log(err);
+        })
+        
     }
 }
+
 
 
 

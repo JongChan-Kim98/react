@@ -33,7 +33,7 @@ const options = {
 
 // 전달 받은 객체 형태를 해석해서 사용할 수 있게 설정
 app.use(express.json());
-
+app.use(express.urlencoded({extended:false}));
 app.use(cors(options));
 
 // 로그인
@@ -120,23 +120,29 @@ app.post('/mypage', async(req,res)=>{
 })
 
 // 마이페이지 프로필 사진 업데이트
-app.post('/mypage'), upload.single("file"), async(req,res) =>{
-    const userId = req.body;
+app.post('/profil', upload.single("file"), async(req,res) =>{
+    const formData = req.body;
+    console.log(formData);
     user.update({
-        profilePicture : "uploadimg/" + req.file.originalname.replace("PNG","")
+        profilePicture : "http://localhost:8000/uploadimg/" + req.file.originalname.replace("PNG","")
     },
     {
         where : {
-            user_id : userId,
+            user_id : formData.userNick,
         }
     }).then((e)=>{
         res.send();
     })
-}
+})
 
-
-
-
+// 
+app.post("/boardStart", async(req,res) => {
+    const boards = await border.findAll({
+        order : [["createdAt","DESC"]]
+    });
+    
+    res.send(boards);
+})
 
 app.listen(8000,()=>{
     console.log('백서버잘열림');
